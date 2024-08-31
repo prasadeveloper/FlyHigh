@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Switch } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Switch, Linking } from 'react-native';
 
 const lightTheme = {
   backgroundColor: '#FFFFFF',
@@ -21,6 +21,22 @@ const MainMenu = ({ navigation }) => {
 
   const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
 
+  const handleRateApp = () => {
+    const url = 'https://play.google.com/store/apps/details?id=com.pd.flyhigh';
+    Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
+  };
+
+  const privacyPolicyPageRedirect =()=>{
+    const url = 'https://privacypolicy-flyhigh.blogspot.com/';
+    Linking.openURL(url).catch(err =>console.error("Couldn't load  page", err))
+  };
+
+  const shareAPP =()=> {
+    const url = 'https://play.google.com/store/apps/details?id=com.pd.flyhigh';
+    Linking.openURL(url).catch(err =>console.error("Couldn't load  page", err))
+  };
+
+
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Text style={[styles.title, { color: theme.textColor }]}>Fly High</Text>
@@ -34,23 +50,25 @@ const MainMenu = ({ navigation }) => {
 
       <TouchableOpacity
         style={[styles.button, { backgroundColor: theme.buttonBackgroundColor }]}
-        onPress={() => alert('Rate this app!')}
+        onPress={handleRateApp}
       >
-        <Text style={[styles.buttonText, { color: theme.buttonTextColor }]}>RATE</Text>
+        <Text style={[styles.buttonText, { color: theme.buttonTextColor }]}>RATE APP</Text>
       </TouchableOpacity>
+
 
       <TouchableOpacity
         style={[styles.button, { backgroundColor: theme.buttonBackgroundColor }]}
-        onPress={() => alert('Privacy Policy')}
+        onPress={shareAPP}
+      >
+        <Text style={[styles.buttonText, { color: theme.buttonTextColor }]}>SHARE</Text>
+      </TouchableOpacity>
+
+
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: theme.buttonBackgroundColor }]}
+        onPress={privacyPolicyPageRedirect}
       >
         <Text style={[styles.buttonText, { color: theme.buttonTextColor }]}>PRIVACY POLICY</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[styles.button, { backgroundColor: theme.buttonBackgroundColor }]}
-        onPress={() => alert('Exiting the app...')}
-      >
-        <Text style={[styles.buttonText, { color: theme.buttonTextColor }]}>EXIT</Text>
       </TouchableOpacity>
 
       <View style={styles.switchContainer}>

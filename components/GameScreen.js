@@ -7,7 +7,7 @@ const BAR_WIDTH = 100;
 const BAR_HEIGHT = 20;
 const PLAYER_SIZE = 50;
 const GRAVITY = 2;  // Increased gravity for faster falling
-const JUMP_VELOCITY = -20; // Decrease the jump height
+const JUMP_VELOCITY = -15; // Decrease the jump height
 const BAR_SPEED = 7; // Increase bar speed for a faster game pace
 
 const generateBar = (offsetY) => ({
